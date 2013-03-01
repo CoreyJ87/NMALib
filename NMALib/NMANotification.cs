@@ -41,6 +41,7 @@ namespace NMALib
 
         public string Event { get; set; }
         public string Description { get; set; }
+        public string Url { get; set; }
 
         public NMANotificationPriority Priority { get; set; }
     }

@@ -6,3 +6,11 @@ G:\workspace\NMALib.Net\NMA\NMA.TestConsole\bin\Debug\NMALib.pdb
 G:\workspace\NMALib.Net\NMA\NMA.TestConsole\obj\Debug\ResolveAssemblyReference.cache
 G:\workspace\NMALib.Net\NMA\NMA.TestConsole\obj\Debug\NMALib.TestConsole.exe
 G:\workspace\NMALib.Net\NMA\NMA.TestConsole\obj\Debug\NMALib.TestConsole.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\bin\Debug\NMALib.TestConsole.exe.config
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\bin\Debug\NMALib.TestConsole.exe
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\bin\Debug\NMALib.TestConsole.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\bin\Debug\NMALib.dll
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\bin\Debug\NMALib.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\obj\Debug\NMA.TestConsole.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\obj\Debug\NMALib.TestConsole.exe
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestConsole\obj\Debug\NMALib.TestConsole.pdb

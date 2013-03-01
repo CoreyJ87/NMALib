@@ -1,0 +1,11 @@
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\bin\Debug\NMA.TestUI.exe.config
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\bin\Debug\NMA.TestUI.exe
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\bin\Debug\NMA.TestUI.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\bin\Debug\NMALib.dll
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\bin\Debug\NMALib.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\obj\Debug\NMA.TestUI.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\obj\Debug\NMA.TestUI.MessageTest.resources
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\obj\Debug\NMA.TestUI.Properties.Resources.resources
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\obj\Debug\NMA.TestUI.csproj.GenerateResource.Cache
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\obj\Debug\NMA.TestUI.exe
+C:\Users\Administrator\workspace\NMALib.Net\NMA.TestUI\obj\Debug\NMA.TestUI.pdb

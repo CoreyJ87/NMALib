@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMALib", "NMALib\NMALib.csproj", "{51649DBB-4772-491F-966F-6ED4E41E584E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMA.TestConsole", "NMA.TestConsole\NMA.TestConsole.csproj", "{9036EC9A-CD57-41CA-ACC9-BA3E6BC3F585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMA.TestUI", "NMA.TestUI\NMA.TestUI.csproj", "{100A9CDA-758B-4B99-BAA2-018CC5B947FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,10 @@ Global
 		{9036EC9A-CD57-41CA-ACC9-BA3E6BC3F585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9036EC9A-CD57-41CA-ACC9-BA3E6BC3F585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9036EC9A-CD57-41CA-ACC9-BA3E6BC3F585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{100A9CDA-758B-4B99-BAA2-018CC5B947FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{100A9CDA-758B-4B99-BAA2-018CC5B947FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{100A9CDA-758B-4B99-BAA2-018CC5B947FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{100A9CDA-758B-4B99-BAA2-018CC5B947FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,3 +3,8 @@ G:\workspace\NMALib.Net\NMA\NMALib\bin\Debug\NMALib.pdb
 G:\workspace\NMALib.Net\NMA\NMALib\obj\Debug\ResolveAssemblyReference.cache
 G:\workspace\NMALib.Net\NMA\NMALib\obj\Debug\NMALib.dll
 G:\workspace\NMALib.Net\NMA\NMALib\obj\Debug\NMALib.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMALib\bin\Debug\NMALib.dll
+C:\Users\Administrator\workspace\NMALib.Net\NMALib\bin\Debug\NMALib.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMALib\obj\Debug\NMALib.dll
+C:\Users\Administrator\workspace\NMALib.Net\NMALib\obj\Debug\NMALib.pdb
+C:\Users\Administrator\workspace\NMALib.Net\NMALib\obj\Debug\NMALib.csprojResolveAssemblyReference.cache

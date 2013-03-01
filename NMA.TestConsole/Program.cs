@@ -1,7 +1,4 @@
-﻿// By Casey Watson
-// http://www.caseywatson.com/
-// Refactory and Modifications By Adriano Maia
-// http://nma.usk.bz
+﻿using System;
 
 namespace NMALib.TestConsole
 {
@@ -9,26 +6,33 @@ namespace NMALib.TestConsole
     {
         static void Main(string[] args)
         {
-            // Before posting a notification, 
-            // check out the [app.config] file to configure the Prowl client.
-
-            // Create a notification.
-            var testNotification =
-                new NMANotification
+        
+            while (true)
+            {
+                Console.WriteLine("Please Enter a Title for the Msg or exit:");
+                var title = Console.ReadLine();
+                if (title == "exit")
                 {
-                    Description = "This is a test notification.",
-                    Event = "Testing...",
-                    Priority = NMANotificationPriority.Normal
-                };
+                    break;
+                }
+                Console.WriteLine("\nPlease Enter a Body of the Message");
+                var body = Console.ReadLine();
+                var fullMsg = "\nYou title is: " + title + "\nWith a body of: " + body;
+                Console.WriteLine(fullMsg);
 
-            // Create the Prowl client.
-            // By default, the Prowl client will attempt to load configuration
-            // from the configuration file (app.config).  You can use an overloaded constructor
-            // to configure the client directly and bypass the configuration file.
-            var testClient = new NMAClient();
 
-            // Post the notification.
-            testClient.PostNotification(testNotification);
+                var notificationMsg =
+               new NMANotification
+               {
+                   Description = body,
+                   Event = title,
+                   Priority = NMANotificationPriority.Normal
+               };
+
+                var messageClient = new NMAClient();
+                // Post the notification.
+                messageClient.PostNotification(notificationMsg);
+            }
         }
     }
 }
