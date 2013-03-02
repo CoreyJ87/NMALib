@@ -60,7 +60,7 @@ namespace NMA.TestUI
                             Priority = PriorityLevel,
                             Url = theURL
                         };
-                
+
                 var messageClient = new NMAClient();
                 // Post the notification.
                 var status = messageClient.PostNotification(notificationMsg);
@@ -91,23 +91,29 @@ namespace NMA.TestUI
                     break;
             }
         }
+
         private void MessageTest_Load(object sender, EventArgs e)
         {
             OutputTextBlock.Text = "Enter your message and click send";
             OutputTextBlock.Update();
         }
+
         private void label5_Click(object sender, EventArgs e)
         {
         }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
         }
+
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
         }
+
         private void textBox1_TextChanged_2(object sender, EventArgs e)
         {
         }
+
         private void OutputTextBlock_TextChanged(object sender, EventArgs e)
         {
         }

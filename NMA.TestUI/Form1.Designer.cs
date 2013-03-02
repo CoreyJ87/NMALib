@@ -169,7 +169,7 @@
             this.Controls.Add(this.title);
             this.Controls.Add(this.label1);
             this.Name = "MessageTest";
-            this.Text = "MessageTest";
+            this.Text = "NMA Message Test App";
             this.Load += new System.EventHandler(this.MessageTest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

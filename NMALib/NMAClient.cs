@@ -63,8 +63,7 @@ namespace NMALib
             updateRequest.ContentType = REQUEST_CONTENT_TYPE;
             updateRequest.Method = REQUEST_METHOD_TYPE;
 
-           
-          
+
             try
             {
                 HttpWebResponse response = (HttpWebResponse) updateRequest.GetResponse();
@@ -80,7 +79,6 @@ namespace NMALib
                     theReturn += "Message Sent!";
                     foreach (XmlAttribute att in thenode.Attributes)
                     {
-
                         theReturn += String.Format("--{0}:{1}", att.Name, att.Value);
                     }
                 }
@@ -93,13 +91,11 @@ namespace NMALib
                 if (response != null)
                     response.Close();
                 return theReturn;
-
             }
             catch (WebException e)
             {
-                return "Error: Cannot connect to server";
+                return "Error: Cannot connect to server\nHow do you expect this to work without an internet connection?";
             }
-      
         }
 
         private string BuildNotificationRequestUrl(NMANotification notification_)
