@@ -31,9 +31,7 @@ namespace NMALib
 
         private NMAClientConfiguration _clientCfg;
 
-        public NMAClient() : this(null)
-        {
-        }
+        public NMAClient() : this(null){}
 
         public NMAClient(NMAClientConfiguration clientCfg_)
         {
@@ -57,40 +55,20 @@ namespace NMALib
             String theReturn = "";
             notification_.Validate();
 
-            var updateRequest = HttpWebRequest.Create(BuildNotificationRequestUrl(notification_)) as HttpWebRequest;
-
-            updateRequest.ContentLength = 0;
-            updateRequest.ContentType = REQUEST_CONTENT_TYPE;
-            updateRequest.Method = REQUEST_METHOD_TYPE;
-
-
             try
             {
-                HttpWebResponse response = (HttpWebResponse) updateRequest.GetResponse();
-                response = (HttpWebResponse) updateRequest.GetResponse();
-                Stream dataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(dataStream);
-
-                XmlDocument xmldoc = new XmlDocument();
-                xmldoc.Load(reader);
-                XmlNode thenode = xmldoc.LastChild.FirstChild;
-                if (thenode.Name == "success")
+                WebRequest updateRequest = HttpWebRequest.Create(BuildNotificationRequestUrl(notification_));
+                updateRequest.ContentLength = 0;
+                updateRequest.ContentType = REQUEST_CONTENT_TYPE;
+                updateRequest.Method = REQUEST_METHOD_TYPE;
+                using (HttpWebResponse response = (HttpWebResponse) updateRequest.GetResponse())
                 {
-                    theReturn += "Message Sent!";
-                    foreach (XmlAttribute att in thenode.Attributes)
+                    using (Stream dataStream = response.GetResponseStream())
                     {
-                        theReturn += String.Format("--{0}:{1}", att.Name, att.Value);
+                        StreamReader reader = new StreamReader(dataStream);
+                        return gettheReturn(reader);
                     }
                 }
-                else
-                {
-                    theReturn += "Message Not SENT!";
-                    theReturn += thenode.InnerText;
-                }
-                reader.Close();
-                if (response != null)
-                    response.Close();
-                return theReturn;
             }
             catch (WebException e)
             {
@@ -98,9 +76,34 @@ namespace NMALib
             }
         }
 
+
+        private String gettheReturn(StreamReader reader)
+        {
+            String theTextReturn = "";
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.Load(reader);
+            XmlNode theNode = xmldoc.LastChild.FirstChild;
+            if (theNode.Name == "success")
+            {
+                theTextReturn += "Message Sent!";
+                foreach (XmlAttribute att in theNode.Attributes)
+                {
+                    theTextReturn += String.Format("--{0}:{1}", att.Name, att.Value);
+                }
+            }
+            else
+            {
+                theTextReturn += "Message Not SENT!";
+                theTextReturn += theNode.InnerText;
+            }
+            return theTextReturn;
+        }
+
         private string BuildNotificationRequestUrl(NMANotification notification_)
         {
-            if (!(_clientCfg.BaseUrl.EndsWith("/"))) _clientCfg.BaseUrl += "/";
+            if (!(_clientCfg.BaseUrl.EndsWith("/")))
+                _clientCfg.BaseUrl += "/";
+
 
             var nmaUrlSb = new StringBuilder(_clientCfg.BaseUrl);
 
@@ -114,9 +117,11 @@ namespace NMALib
                 ((sbyte) (notification_.Priority)));
 
             if (!String.IsNullOrEmpty(_clientCfg.ProviderKey))
+            {
                 nmaUrlSb.AppendFormat(
                     POST_NOTIFICATION_PROVIDER_PARAMETER,
                     HttpUtility.UrlEncode(_clientCfg.ProviderKey));
+            }
 
             return nmaUrlSb.ToString();
         }

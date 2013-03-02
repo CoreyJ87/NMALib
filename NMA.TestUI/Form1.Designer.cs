@@ -132,6 +132,9 @@
             // 
             // OutputTextBlock
             // 
+            this.OutputTextBlock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputTextBlock.Location = new System.Drawing.Point(21, 203);
             this.OutputTextBlock.Name = "OutputTextBlock";
             this.OutputTextBlock.ReadOnly = true;
@@ -168,6 +171,7 @@
             this.Controls.Add(this.retrieveInput);
             this.Controls.Add(this.title);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(324, 281);
             this.Name = "MessageTest";
             this.Text = "NMA Message Test App";
             this.Load += new System.EventHandler(this.MessageTest_Load);

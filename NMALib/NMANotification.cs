@@ -43,6 +43,7 @@ namespace NMALib
         public string Description { get; set; }
         public string Url { get; set; }
 
-        public NMANotificationPriority Priority { get; set; }
+        public NMANotificationPriority Priority { get; set; }       
+        
     }
 }

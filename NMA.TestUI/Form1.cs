@@ -21,6 +21,13 @@ namespace NMA.TestUI
         {
             InitializeComponent();
         }
+        private void MessageTest_Load(object sender, EventArgs e)
+        {
+            OutputTextBlock.Text = "Enter your message and click send";
+            OutputTextBlock.Update();
+
+        }
+        
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,11 +35,11 @@ namespace NMA.TestUI
             OutputTextBlock.Clear();
             OutputTextBlock.Update();
 
-            if (title.Text == "")
+            if (String.IsNullOrEmpty(title.Text))
             {
                 MessageBox.Show("Error: Please enter a title!");
             }
-            else if (body.Text == "")
+            else if (String.IsNullOrEmpty(body.Text))
             {
                 MessageBox.Show("Error: Please enter a message!");
             }
@@ -45,13 +52,8 @@ namespace NMA.TestUI
                 OutputTextBlock.Text = "Sending.....";
                 OutputTextBlock.Update();
                 string theURL = "";
-                if (urltext.Text != "")
-                {
-                    if (!urltext.Text.Contains("http://"))
-                    {
-                        theURL = String.Concat("http://", urltext.Text);
-                    }
-                }
+                if (urltext.Text != "" && !urltext.Text.Contains("http://")) theURL = String.Concat("http://", urltext.Text);
+     
                 var notificationMsg =
                     new NMANotification
                         {
@@ -61,12 +63,12 @@ namespace NMA.TestUI
                             Url = theURL
                         };
 
-                var messageClient = new NMAClient();
+                NMAClient messageClient = new NMAClient();
                 // Post the notification.
-                var status = messageClient.PostNotification(notificationMsg);
                 OutputTextBlock.Clear();
+                OutputTextBlock.Text = messageClient.PostNotification(notificationMsg);
                 OutputTextBlock.Update();
-                OutputTextBlock.Text = status;
+             
             }
         }
 
@@ -91,12 +93,9 @@ namespace NMA.TestUI
                     break;
             }
         }
+       
 
-        private void MessageTest_Load(object sender, EventArgs e)
-        {
-            OutputTextBlock.Text = "Enter your message and click send";
-            OutputTextBlock.Update();
-        }
+     
 
         private void label5_Click(object sender, EventArgs e)
         {
