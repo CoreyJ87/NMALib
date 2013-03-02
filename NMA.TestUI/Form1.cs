@@ -15,24 +15,61 @@ namespace NMA.TestUI
 {
     public partial class MessageTest : Form
     {
-        public NMALib.NMANotificationPriority PriorityLevel = NMANotificationPriority.VeryLow;
+        public NMALib.NMANotificationPriority PriorityLevel = NMANotificationPriority.Normal;
+
         public MessageTest()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
 
-        }
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            OutputTextBlock.Clear();
+            OutputTextBlock.Update();
 
+            if (title.Text == "")
+            {
+                MessageBox.Show("Error: Please enter a title!");
+            }
+            else if (body.Text == "")
+            {
+                MessageBox.Show("Error: Please enter a message!");
+            }
+            else if (prioritybox.SelectedItem == null)
+            {
+                MessageBox.Show("Error: Please select a priority!");
+            }
+            else
+            {
+                OutputTextBlock.Text = "Sending.....";
+                OutputTextBlock.Update();
+                string theURL = "";
+                if (urltext.Text != "")
+                {
+                    if (!urltext.Text.Contains("http://"))
+                    {
+                        theURL = String.Concat("http://", urltext.Text);
+                    }
+                }
+                var notificationMsg =
+                    new NMANotification
+                        {
+                            Description = body.Text,
+                            Event = title.Text,
+                            Priority = PriorityLevel,
+                            Url = theURL
+                        };
+                
+                var messageClient = new NMAClient();
+                // Post the notification.
+                var status = messageClient.PostNotification(notificationMsg);
+                OutputTextBlock.Clear();
+                OutputTextBlock.Update();
+                OutputTextBlock.Text = status;
+            }
         }
+
         private void prioritybox_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (prioritybox.SelectedItem.ToString())
@@ -54,58 +91,25 @@ namespace NMA.TestUI
                     break;
             }
         }
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void MessageTest_Load(object sender, EventArgs e)
         {
-            OutputTextBlock.Clear();
+            OutputTextBlock.Text = "Enter your message and click send";
             OutputTextBlock.Update();
-          
-            if (title.Text == "" )
-            {
-                MessageBox.Show("Error: Please enter a title!");  
-            }
-            else if( body.Text == "")
-            {
-                MessageBox.Show("Error: Please enter a message!");  
-            }
-            else if(prioritybox.SelectedItem  == null)
-            {
-                MessageBox.Show("Error: Please select a priority!");  
-            }
-        else
-            {
-                string theURL = "";
-                if (urltext.Text != "")
-                {
-                    if (!urltext.Text.Contains("http://"))
-                    {
-                        theURL = String.Concat("http://", urltext.Text);
-                    }
-                }
-
-                var notificationMsg =
-                    new NMANotification
-                        {
-                            Description = body.Text,
-                            Event = title.Text,
-                            Priority = PriorityLevel,
-                            Url = theURL
-                        };
-
-                var messageClient = new NMAClient();
-                // Post the notification.
-                var status = messageClient.PostNotification(notificationMsg);
-                OutputTextBlock.Text = status;
-
-            }
         }
-
+        private void label5_Click(object sender, EventArgs e)
+        {
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+        }
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+        }
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        {
+        }
         private void OutputTextBlock_TextChanged(object sender, EventArgs e)
         {
-
         }
-
-        
     }
 }

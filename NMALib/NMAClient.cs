@@ -11,6 +11,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Text.RegularExpressions;
+using System.Xml.XPath;
 
 namespace NMALib
 {
@@ -53,6 +54,7 @@ namespace NMALib
 
         public string PostNotification(NMANotification notification_)
         {
+            String theReturn = "";
             notification_.Validate();
 
             var updateRequest = HttpWebRequest.Create(BuildNotificationRequestUrl(notification_)) as HttpWebRequest;
@@ -61,80 +63,43 @@ namespace NMALib
             updateRequest.ContentType = REQUEST_CONTENT_TYPE;
             updateRequest.Method = REQUEST_METHOD_TYPE;
 
-            HttpWebResponse response = (HttpWebResponse) updateRequest.GetResponse();
-            string statusCode = string.Empty;
+           
+          
             try
             {
+                HttpWebResponse response = (HttpWebResponse) updateRequest.GetResponse();
                 response = (HttpWebResponse) updateRequest.GetResponse();
                 Stream dataStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(dataStream);
-                String attribs = "";
-                StringBuilder output = new StringBuilder();
 
-
-                using (XmlReader xmlreader = XmlReader.Create(reader))
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.Load(reader);
+                XmlNode thenode = xmldoc.LastChild.FirstChild;
+                if (thenode.Name == "success")
                 {
-                    XmlWriterSettings ws = new XmlWriterSettings();
-                    ws.Indent = true;
-                    using (XmlWriter writer = XmlWriter.Create(output, ws))
+                    theReturn += "Message Sent!";
+                    foreach (XmlAttribute att in thenode.Attributes)
                     {
-                        // Parse the file and display each of the nodes.
-                        while (xmlreader.Read())
-                        {
-                            switch (xmlreader.NodeType)
-                            {
-                                case XmlNodeType.Element:
-                                  
-                                    writer.WriteStartElement(xmlreader.Name);
-                                    if (xmlreader.HasAttributes)
-                                    {
-                                        attribs = "Success code: " + xmlreader[0] + "---Remaining msgs: " + xmlreader[1] +
-                                                  "---Resets in: " + xmlreader[2] + " minutes";
-                                        xmlreader.MoveToElement();
-                                        /*  for (int i = 0; i < xmlreader.AttributeCount; i++)
-                                        {
-                                            attribs = attribs + xmlreader.Name + xmlreader[i];
-                                            inner = reader.ReadInnerXml();
-                                        }*/
-                                        // Move the reader back to the element node.   
-                                    }
-                                    break;
-                                case XmlNodeType.Text:
-                                    writer.WriteString(xmlreader.Value);
-                                    break;
-                                case XmlNodeType.XmlDeclaration:
-                                case XmlNodeType.ProcessingInstruction:
-                                    writer.WriteProcessingInstruction(xmlreader.Name, xmlreader.Value);
-                                    break;
-                                case XmlNodeType.Comment:
-                                    writer.WriteComment(xmlreader.Value);
-                                    break;
-                                case XmlNodeType.EndElement:
-                                    writer.WriteFullEndElement();
-                                    break;
-                            }
-                        }
-                    }
-                    string result = Regex.Replace(output.ToString(), @"<(.|\n)*?>", string.Empty);
-                    if (result.Trim() == "" || result.Trim() == null)
-                    {
-                        reader.Close();
-                        dataStream.Close();
-                        return attribs;
-                    }
-                    else
-                    {
-                        reader.Close();
-                        dataStream.Close();
-                        return result.Trim();
+
+                        theReturn += String.Format("--{0}:{1}", att.Name, att.Value);
                     }
                 }
-            }
-            finally
-            {
+                else
+                {
+                    theReturn += "Message Not SENT!";
+                    theReturn += thenode.InnerText;
+                }
+                reader.Close();
                 if (response != null)
                     response.Close();
+                return theReturn;
+
             }
+            catch (WebException e)
+            {
+                return "Error: Cannot connect to server";
+            }
+      
         }
 
         private string BuildNotificationRequestUrl(NMANotification notification_)
