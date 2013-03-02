@@ -3,21 +3,22 @@ Notify My Android (.Net Library)
 
 	Notify My Android (http://nma.usk.bz)
 	NMALib.Net - .Net Library to access NMA public API
-	Last Stable Version: 1.0.0
-	For developers: http://github.com/uskr/NMALib.Net
-	Author: Casey Watson (http://www.codeplex.com/site/users/view/caseywatson)
-	Refactoring and Modifications: Adriano Maia (adriano@usk.bz)
+	Last Stable Version: 2.0
+	For developers: https://github.com/SyNiK4L/NMATest.git
+	Author: Casey Watson/Corey Jones (http://www.codeplex.com/site/users/view/caseywatson) / http://www.SyNiK4L.net
+	Refactoring and Modifications: Adriano Maia (adriano@usk.bz), Corey Jones (synik4l@gmail.com)
 
 	This library provides an easy to use API for .Net that interfaces with Notify My Android public API.
 
 ### More Information
 
 	Example application on how to use and source code available
+	Now includes Console APP and WinForms App
 
 License (MIT)
 -------------
 
-    Copyright (c) 2010-2011, Casey Watson and Adriano Maia.
+    Copyright (c) 2010-2013, Casey Watson, Adriano Maia, Corey Jones
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
