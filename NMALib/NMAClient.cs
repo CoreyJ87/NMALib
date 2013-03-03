@@ -10,8 +10,6 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Xml;
-using System.Text.RegularExpressions;
-using System.Xml.XPath;
 
 namespace NMALib
 {
@@ -52,7 +50,6 @@ namespace NMALib
 
         public string PostNotification(NMANotification notification_)
         {
-            String theReturn = "";
             notification_.Validate();
 
             try

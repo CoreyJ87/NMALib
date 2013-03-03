@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.TextBox();
             this.retrieveInput = new System.Windows.Forms.Button();
@@ -39,6 +40,12 @@
             this.urltext = new System.Windows.Forms.TextBox();
             this.OutputTextBlock = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +65,8 @@
             this.title.Size = new System.Drawing.Size(174, 20);
             this.title.TabIndex = 1;
             this.title.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.title.Validating += new System.ComponentModel.CancelEventHandler(this.title_Validating);
+            this.title.Validated += new System.EventHandler(this.title_Validated_1);
             // 
             // retrieveInput
             // 
@@ -86,6 +95,8 @@
             this.body.Size = new System.Drawing.Size(173, 20);
             this.body.TabIndex = 4;
             this.body.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.body.Validating += new System.ComponentModel.CancelEventHandler(this.body_Validating);
+            this.body.Validated += new System.EventHandler(this.body_Validated);
             // 
             // label3
             // 
@@ -138,7 +149,7 @@
             this.OutputTextBlock.Location = new System.Drawing.Point(21, 203);
             this.OutputTextBlock.Name = "OutputTextBlock";
             this.OutputTextBlock.ReadOnly = true;
-            this.OutputTextBlock.Size = new System.Drawing.Size(263, 37);
+            this.OutputTextBlock.Size = new System.Drawing.Size(284, 37);
             this.OutputTextBlock.TabIndex = 9;
             this.OutputTextBlock.Text = "";
             this.OutputTextBlock.TextChanged += new System.EventHandler(this.OutputTextBlock_TextChanged);
@@ -155,11 +166,23 @@
             this.label5.Text = "Notify My Android Test App";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // errorProvider3
+            // 
+            this.errorProvider3.ContainerControl = this;
+            // 
             // MessageTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 243);
+            this.ClientSize = new System.Drawing.Size(329, 243);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.OutputTextBlock);
             this.Controls.Add(this.urltext);
@@ -171,10 +194,13 @@
             this.Controls.Add(this.retrieveInput);
             this.Controls.Add(this.title);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(324, 281);
+            this.MaximumSize = new System.Drawing.Size(345, 281);
             this.Name = "MessageTest";
             this.Text = "NMA Message Test App";
             this.Load += new System.EventHandler(this.MessageTest_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,6 +219,9 @@
         private System.Windows.Forms.TextBox urltext;
         private System.Windows.Forms.RichTextBox OutputTextBlock;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProvider3;
     }
 }
 
