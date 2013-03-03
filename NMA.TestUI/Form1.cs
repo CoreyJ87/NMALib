@@ -159,14 +159,12 @@ namespace NMA.TestUI
             }
         }
 
-
-
-        //Extra
         private void body_Validated(object sender, EventArgs e)
         {
             errorProvider2.SetError(body, "");
         }
 
+        //Extra
         private void label5_Click(object sender, EventArgs e)
         {
         }
